@@ -1,4 +1,6 @@
 ArtisanalPlaylist::Application.routes.draw do
+  resources :djs
+  root :to => 'root#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
