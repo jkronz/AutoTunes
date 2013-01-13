@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Ostrich";
+  src: url("/fonts/ostrich-regular-webfont.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Ostrich";
+  src: url("/fonts/ostrich-bold-webfont.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Junction";
+  src: url("/fonts/Junction-webfont.ttf");
+}

@@ -5,4 +5,3 @@
 //= require lodash.min.js
 //= require backbone-min.js
 //= require bootstrap.min.js
-
