@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112153125) do
+ActiveRecord::Schema.define(:version => 20130113144009) do
 
   create_table "djs", :force => true do |t|
     t.string   "code"
     t.string   "name"
+    t.integer  "generated_playlist_id"
+    t.integer  "requested_playlist_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "playlists", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tracks", :force => true do |t|
+    t.string   "uri"
+    t.string   "title"
+    t.string   "artist"
+    t.integer  "playlist_id"
+    t.integer  "position"
+    t.boolean  "played"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tracks", ["playlist_id"], :name => "index_tracks_on_playlist_id"
 
 end
