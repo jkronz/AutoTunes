@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(:version => 20130113144009) do
     t.string   "artist"
     t.integer  "playlist_id"
     t.integer  "position"
-    t.boolean  "played"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "played",      :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "tracks", ["playlist_id"], :name => "index_tracks_on_playlist_id"

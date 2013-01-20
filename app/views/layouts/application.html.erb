@@ -41,12 +41,12 @@
 
 <div class="container">
   <%= yield %>
-  <!--<iframe id="spotify-player" src="https://embed.spotify.com/?uri=spotify:trackset:SomeTitle:0v9fLaxFe5VlqLUQP4ISil" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>-->
-  <iframe src="https://open.spotify.com/remote" style="width:0px; height:0px;" frameborder="0" hspace="0" id='remote'></iframe>
+  <iframe id="spotify-player" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
   <hr>
 
   <footer>
-    <p>&copy; Company 2012</p>
+    <p>&copy; Artisanal Playlist 2013</p>
   </footer>
 
 </div>
@@ -54,7 +54,10 @@
 <%= javascript_include_tag "dependencies" %>
 <%= javascript_include_tag "application" %>
 <script type="text/javascript">
-
+  $(function() {
+    var player = window.open();
+    player.location.href = "spotify:track:3y8Rl0mYKgE6Qs0yWwcFH7";
+  });
 </script>
 </body>
 </html>

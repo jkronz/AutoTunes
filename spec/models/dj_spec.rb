@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Dj do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let :dj do
+    @dj ||= Dj.create
+  end
+
+  describe 'play queue' do
+    it "should next a track" do
+      dj.respond_to?(:next).should be_true
+    end
+  end
 end
