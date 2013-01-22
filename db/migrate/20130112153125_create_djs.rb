@@ -7,5 +7,9 @@ class CreateDjs < ActiveRecord::Migration
       t.string :session_id
       t.timestamps
     end
+
+    add_index :djs, :request_queue_id
+    add_index :djs, :played_list_id
+
   end
 end

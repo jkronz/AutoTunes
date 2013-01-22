@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20130120172321) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "djs", ["played_list_id"], :name => "index_djs_on_played_list_id"
+  add_index "djs", ["request_queue_id"], :name => "index_djs_on_request_queue_id"
+
   create_table "playlists", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

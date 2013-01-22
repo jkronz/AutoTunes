@@ -4,8 +4,8 @@ describe EchoNestApi do
 
   describe 'playlist creation' do
     it "should build the correct URL" do
-      url = EchoNestApi.build_url("playlist/dynamic", {artist: 'weezer', type: 'artist-radio'})
-      url.should == "http://developer.echonest.com/api/v4/playlist/dynamic?api_key=#{$echo_nest['api_key']}&format=json&artist=weezer&type=artist-radio"
+      url = EchoNestApi.build_url("playlist/dynamic", {artist: 'new order', type: 'artist-radio'})
+      url.should == "http://developer.echonest.com/api/v4/playlist/dynamic?api_key=#{$echo_nest['api_key']}&format=json&artist=new%20order&type=artist-radio"
     end
   end
 
