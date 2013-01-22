@@ -1,0 +1,1 @@
+class PartyDj.Views.Dj.Host extends PartyDj.Views.BaseView

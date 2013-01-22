@@ -10,4 +10,17 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require init
+//= require models/dj
+//= require views/base_view
+//= require views/error
+//= require views/djs/create
+//= require views/djs/host
+//= require views/djs/show
+//= require router
 //= require app
+
+$(function() {
+  window.PartyDj.app = new PartyDj.Application();
+  window.PartyDj.app.load();
+});
