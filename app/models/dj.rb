@@ -1,16 +1,15 @@
 require 'SecureRandom'
 class Dj < ActiveRecord::Base
-  attr_accessible :code, :name
+  before_create :generate_id
+  before_create :create_playlists
+
+  validates_presence_of :seed, :on => :create
+
+  attr_accessible :seed
+  attr_accessor :seed
 
   has_one :request_queue, :class_name => 'Playlist', :foreign_key => 'request_queue_id', :dependent => :destroy
   has_one :played_list, :class_name => 'Playlist', :foreign_key => 'played_list_id', :dependent => :destroy
-
-  def initialize(options={})
-    request_queue = Playlist.create
-    played_list = Playlist.create
-    code = SecureRandom.hex(3)
-    create_generated_playlist(options[:seed])
-  end
 
   def play_queue
     request_queue.tracks + generated_queue.tracks
@@ -22,9 +21,18 @@ class Dj < ActiveRecord::Base
     current_track
   end
 
-  def create_generated_playlist(seed)
-    EchoNestApi.create_dynamic_playlist(seed)
+  def create_generated_playlist
+    EchoNestApi.create_dynamic_playlist(self.seed)
   end
 
+  def create_playlists
+    request_queue = Playlist.create
+    played_list = Playlist.create
+    create_generated_playlist
+  end
+
+  def generate_id
+    id = SecureRandom.hex(3)
+  end
 
 end

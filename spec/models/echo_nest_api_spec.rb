@@ -30,7 +30,7 @@ describe EchoNestApi do
 
     let :success_response do
       @success = mock(Typhoeus::Response)
-      @success.stub(:body).and_return(success_hash)
+      @success.stub(:body).and_return(success_hash.to_json())
       @success
     end
 
@@ -43,7 +43,7 @@ describe EchoNestApi do
             "code"=> 3,
             "message"=> "api_key - You are limited to 120 accesses every minute. You might be eligible for a rate limit increase, go to http://developer.echonest.com/account/upgrade"}
         }
-      })
+      }.to_json())
       resp
     end
 

@@ -19,7 +19,7 @@ describe DjsController do
   describe "GET show" do
     it "assigns the requested dj as @dj" do
       dj = Dj.create! valid_attributes
-      get :show, {format: 'json', code: dj.code}, valid_session
+      get :show, {format: 'json', id: dj.id}, valid_session
       assigns(:dj).should eq(dj)
     end
   end
@@ -41,7 +41,7 @@ describe DjsController do
 
       it "renders the created dj" do
         post :create, {format: 'json', dj: valid_attributes}, valid_session
-        response.should redirect_to(Dj.last)
+        response.status.should == 201
       end
     end
 

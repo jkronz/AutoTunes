@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Dj do
   let :dj do
-    @dj ||= Dj.create
+    @dj ||= Dj.create({seed: "Crystal Castles"})
   end
 
   describe 'play queue' do

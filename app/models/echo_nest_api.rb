@@ -22,7 +22,8 @@ class EchoNestApi
 
     def parse_response(response)
       begin
-        resp = response.body['response']
+        resp = JSON.parse(response.body)['response']
+
         if resp['status']['code'] == 0
           result = resp
         else
@@ -42,5 +43,6 @@ class EchoNestApi
       "http://developer.echonest.com/api/v4"
     end
   end
+
 
 end
