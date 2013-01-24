@@ -19,8 +19,9 @@
 //= require views/djs/show
 //= require router
 //= require app
-
+//= require_tree ./templates
 $(function() {
+
   window.PartyDj.app = new PartyDj.Application();
   window.PartyDj.app.load();
 });

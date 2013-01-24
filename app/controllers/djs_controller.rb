@@ -1,4 +1,5 @@
 class DjsController < ApplicationController
+
   # GET /djs
   # GET /djs.json
   def index

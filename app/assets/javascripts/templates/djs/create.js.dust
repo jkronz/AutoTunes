@@ -1,0 +1,8 @@
+<form class="create-dj-form">
+  <fieldset>
+    <legend>Create a DJ</legend>
+    <label for="seed">Artist Name</label>
+    <input type="text" id="seed">
+    <button class="btn btn-primary">Create</button>
+  </fieldset>
+</form>
