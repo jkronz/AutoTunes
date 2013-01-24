@@ -2,7 +2,14 @@ class App.Models.Dj extends Backbone.Model
 
   url: =>
     if @isNew()
-      "/dj/#{@get('id')}"
+      "/djs"
     else
-      "/dj"
+      "/djs/#{@get('id')}"
+
+
+  fetchNextTrack: =>
+    @nextTrack = new App.Models.Track
+      dj_id: @get('id')
+    @nextTrack.fetch()
+
 

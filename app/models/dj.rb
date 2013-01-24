@@ -23,7 +23,7 @@ class Dj < ActiveRecord::Base
 
   def create_generated_playlist
     echo_nest_result = EchoNestApi.create_dynamic_playlist(self.seed)
-    session_id = echo_nest_result['session_id']
+    self.session_id = echo_nest_result['session_id']
   end
 
   def next_generated_track

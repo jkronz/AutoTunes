@@ -2,6 +2,7 @@ class App.Application
 
   constructor: ->
     @dispatch = _.extend Backbone.Events
+    @errorView = new App.Views.ErrorView()
     @router = new App.Router()
 
   load: ->

@@ -12,9 +12,10 @@ class App.Router extends Backbone.Router
     @navigate('djs/create')
 
   hostDj: (dj) =>
+    console.log(['dj', dj])
     @closeView()
     hostDjView = new App.Views.Dj.Host({model: dj})
-    @showView(createDjView)
+    @showView(hostDjView)
     @navigate("djs/#{id}/host")
 
   reloadHostPage: (id) =>

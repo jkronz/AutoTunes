@@ -7,7 +7,9 @@ ArtisanalPlaylist::Application.routes.draw do
   end
 
   match '(*url)' => 'root#index', :constraints => XHRConstraint.new
-  resources :djs
+  resources :djs do
+    #resources :tracks
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
