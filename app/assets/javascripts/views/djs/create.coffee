@@ -1,4 +1,4 @@
-class PartyDj.Views.Dj.Create extends PartyDj.Views.BaseView
+class App.Views.Dj.Create extends App.Views.BaseView
   events:
     "submit form": "createDj"
 
@@ -11,10 +11,10 @@ class PartyDj.Views.Dj.Create extends PartyDj.Views.BaseView
       $("#application").html(@el)
 
   createDj: =>
-    dj = new PartyDj.Models.Dj
+    dj = new App.Models.Dj
       seed: @$("#seed")
     dj.save
       success: (model, response) =>
-        PartyDj.app.router.trigger("djs/#{model.get('id')}", {trigger: true})
-      error: PartyDj.app.errorView.error
+        App.app.router.trigger("djs/#{model.get('id')}", {trigger: true})
+      error: App.app.errorView.error
     return false

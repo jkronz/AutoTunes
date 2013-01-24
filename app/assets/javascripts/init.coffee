@@ -4,7 +4,7 @@ unless window.console?
     #nothin.
 
 # Initialize global QuantDesk namespace.
-window.PartyDj = _.extend {},
+window.App = _.extend {},
     Collections: {}
     Models: {}
     Utils:

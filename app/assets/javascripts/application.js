@@ -22,6 +22,6 @@
 //= require_tree ./templates
 $(function() {
 
-  window.PartyDj.app = new PartyDj.Application();
-  window.PartyDj.app.load();
+  window.App.app = new App.Application();
+  window.App.app.load();
 });

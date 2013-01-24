@@ -1,4 +1,4 @@
-class PartyDj.Models.Dj extends Backbone.Model
+class App.Models.Dj extends Backbone.Model
 
   url: =>
     if @isNew()

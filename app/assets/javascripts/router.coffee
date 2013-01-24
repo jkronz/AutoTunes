@@ -1,4 +1,4 @@
-class PartyDj.Router extends Backbone.Router
+class App.Router extends Backbone.Router
   routes:
     'djs/create': 'createDj'
     'djs/:id': 'showDj'
@@ -7,24 +7,24 @@ class PartyDj.Router extends Backbone.Router
   createDj: =>
     console.log('creating dj')
     @closeView()
-    createDjView = new PartyDj.Views.Dj.Create()
+    createDjView = new App.Views.Dj.Create()
     @showView(createDjView)
     @navigate('djs/create')
 
   hostDj: (dj) =>
     @closeView()
-    hostDjView = new PartyDj.Views.Dj.Host({model: dj})
+    hostDjView = new App.Views.Dj.Host({model: dj})
     @showView(createDjView)
     @navigate("djs/#{id}/host")
 
   reloadHostPage: (id) =>
-    dj = new PartyDj.Models.Dj({id: id})
+    dj = new App.Models.Dj({id: id})
     @hostDj(dj)
 
   showDj: (id) =>
     @closeView()
-    dj = new PartyDj.Models.Dj({id: id})
-    showDjView = new PartyDj.Views.Dj.Show({model: dj})
+    dj = new App.Models.Dj({id: id})
+    showDjView = new App.Views.Dj.Show({model: dj})
     @showView(createDjView)
     @navigate("djs/#{id}")
 

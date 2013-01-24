@@ -1,4 +1,4 @@
-class PartyDj.Views.BaseView extends Backbone.View
+class App.Views.BaseView extends Backbone.View
   onClose: =>
     @undelegateEvents()
     @remove()

@@ -1,8 +1,8 @@
-class PartyDj.Application
+class App.Application
 
   constructor: ->
     @dispatch = _.extend Backbone.Events
-    @router = new PartyDj.Router()
+    @router = new App.Router()
 
   load: ->
     router = @router
