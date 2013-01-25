@@ -16,11 +16,13 @@ class App.Router extends Backbone.Router
     @closeView()
     hostDjView = new App.Views.Dj.Host({model: dj})
     @showView(hostDjView)
-    @navigate("djs/#{id}/host")
+    @navigate("djs/#{dj.get('id')}/host")
 
   reloadHostPage: (id) =>
     dj = new App.Models.Dj({id: id})
-    @hostDj(dj)
+    dj.fetch
+      success: =>
+        @hostDj(dj)
 
   showDj: (id) =>
     @closeView()

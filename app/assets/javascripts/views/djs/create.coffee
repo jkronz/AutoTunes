@@ -16,6 +16,10 @@ class App.Views.Dj.Create extends App.Views.BaseView
       success: (model, response) =>
         console.log(['model', model])
         console.log(['response', response])
-        App.app.router.trigger("djs/#{model.get('id')}/host", {trigger: true})
-      error: App.app.errorView.error
+        console.log(['App.app.router', App.app.router])
+        App.app.router.navigate("djs/#{model.get('id')}/host", {trigger: true})
+      error: (model, response) =>
+        console.log(['error model', model])
+        console.log(['error response', response])
+        App.app.errorView.error
     return false

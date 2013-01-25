@@ -3,9 +3,12 @@ class App.Views.Dj.Host extends App.Views.BaseView
   initialize: (options) =>
     @dj = options.model
     @dj.on 'change', @render
+    @render()
 
   render: =>
     dust.render 'djs/host', @dj.toJSON(), (err, out) =>
+      console.log(['out', out])
+      console.log(['err', err])
       @$el.html(out)
       @nextTrack = @dj.seedTrack
       $("#application").html(@el)
