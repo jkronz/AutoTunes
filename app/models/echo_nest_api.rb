@@ -8,6 +8,11 @@ class EchoNestApi
       parse_response(Typhoeus.get(url))
     end
 
+    def next_track(session_id)
+      url = self.build_url("playlist/dynamic/next", {session_id: session_id})
+      parse_response(Typhoeus.get(url))
+    end
+
     def build_url(action, params)
       URI.escape "#{self.echonest_url}/#{action}#{define_query(params)}"
     end
