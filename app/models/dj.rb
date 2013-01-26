@@ -6,11 +6,11 @@ class Dj < ActiveRecord::Base
   validates_presence_of :seed, :on => :create
 
   attr_accessible :seed, :request_queue_id, :played_list_id
-  attr_accessor :seed
+  attr_accessor :seed, :seed_track
 
   belongs_to :request_queue, :class_name => 'Playlist', :foreign_key => 'request_queue_id', :dependent => :destroy
   belongs_to :played_list, :class_name => 'Playlist', :foreign_key => 'played_list_id', :dependent => :destroy
-
+  belongs_to :current_track, :class_name => 'Track', :foreign_key => 'current_track_id', :dependent => :destroy
   def play_queue
     request_queue.tracks + generated_queue.tracks
   end
@@ -23,6 +23,8 @@ class Dj < ActiveRecord::Base
 
   def create_generated_playlist
     echo_nest_result = EchoNestApi.create_dynamic_playlist(self.seed)
+    seed_track_hash = SpotifyApi.echo_nest_to_spotify(echo_nest_result)
+    self.current_track = Track.create(seed_track_hash)
     self.session_id = echo_nest_result['session_id']
   end
 
@@ -40,4 +42,7 @@ class Dj < ActiveRecord::Base
     self.id = SecureRandom.hex(3)
   end
 
+  def as_json(options={})
+    super(options.merge(:include => [:current_track]))
+  end
 end

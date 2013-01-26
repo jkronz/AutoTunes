@@ -5,6 +5,7 @@ class CreateDjs < ActiveRecord::Migration
       t.integer :request_queue_id
       t.integer :played_list_id
       t.string :session_id
+      t.string :current_track_id
       t.timestamps
     end
 

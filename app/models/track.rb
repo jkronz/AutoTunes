@@ -1,3 +1,4 @@
 class Track < ActiveRecord::Base
-  attr_accessible :artist, :title, :uri, :position
+  attr_accessible :artist, :name, :uri, :position, :length
+
 end

@@ -7,6 +7,12 @@ class SpotifyApi
       parse_track(Typhoeus.get(url))
     end
 
+    def echo_nest_to_spotify(echo_nest_result)
+      echo_nest_song = echo_nest_result['songs'].first
+      spotify_query = "#{echo_nest_song['artist_name']} #{echo_nest_song['title']}"
+      find_track(spotify_query)
+    end
+
     def build_url(query)
       URI.escape "#{base_url}#{build_query({q: query})}"
     end

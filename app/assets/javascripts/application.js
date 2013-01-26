@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require init
+//= require models/track
 //= require models/dj
 //= require views/base_view
 //= require views/error

@@ -6,10 +6,6 @@ class App.Models.Dj extends Backbone.Model
     else
       "/djs/#{@get('id')}"
 
-
-  fetchNextTrack: =>
-    @nextTrack = new App.Models.Track
-      dj_id: @get('id')
-    @nextTrack.fetch()
-
-
+  parse: (attributes) =>
+    @currentTrack = new App.Models.Track(attributes.current_track)
+    attributes

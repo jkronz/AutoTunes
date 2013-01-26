@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20130120172321) do
     t.integer  "request_queue_id"
     t.integer  "played_list_id"
     t.string   "session_id"
+    t.string   "current_track_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
@@ -31,9 +32,10 @@ ActiveRecord::Schema.define(:version => 20130120172321) do
 
   create_table "tracks", :force => true do |t|
     t.string   "artist"
-    t.string   "title"
+    t.string   "name"
     t.string   "uri"
     t.integer  "position"
+    t.integer  "length"
     t.integer  "playlist_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

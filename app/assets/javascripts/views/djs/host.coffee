@@ -7,24 +7,34 @@ class App.Views.Dj.Host extends App.Views.BaseView
 
   render: =>
     dust.render 'djs/host', @dj.toJSON(), (err, out) =>
-      console.log(['out', out])
-      console.log(['err', err])
       @$el.html(out)
-      @nextTrack = @dj.seedTrack
+      @nextTrack = @dj.currentTrack
       $("#application").html(@el)
       @play()
 
   play: =>
-    if @nextTrack?
-      @playing = true
-      @currentTrack = @nextTrack
-      if @currentTimeout?
-        clearTimeout(@currentTimeout)
-        delete @currentTimeout
-      window.location.href = @currentTrack.get('uri')
-      @currentTrackTimeout = setTimeout(@currentTrack.get('length') * 1000, @playNext)
-      @queueNextTrack()
+    @currentTrack = @nextTrack
+    if @currentTimeout?
+      clearTimeout(@currentTimeout)
+      delete @currentTimeout
+    console.log(['@currentTrack.get("uri")', @currentTrack.get('uri')])
+    window.location.href = @currentTrack.get('uri')
+    @currentTimeout = setTimeout(@currentTrack.get('length') * 1000, @next)
+    @queueNextTrack()
 
+  queueNextTrack: =>
+    @trackLoaded = false
+    @nextTrack = new App.Models.Track({dj_id: @dj.get('id')})
+    @nextTrack.save {},
+      wait: true
+      success: @loadTrack
 
+  loadTrack: =>
+    @trackLoaded = true
 
-
+  next: =>
+    if @trackLoaded
+      @play
+    else
+      @nextTrack.on 'sync', =>
+        @play

@@ -10,4 +10,6 @@ describe Dj do
       dj.respond_to?(:next).should be_true
     end
   end
+
+
 end
