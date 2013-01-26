@@ -17,9 +17,12 @@ class App.Views.Dj.Host extends App.Views.BaseView
     if @currentTimeout?
       clearTimeout(@currentTimeout)
       delete @currentTimeout
-    console.log(['@currentTrack.get("uri")', @currentTrack.get('uri')])
-    window.location.href = @currentTrack.get('uri')
-    @currentTimeout = setTimeout(@currentTrack.get('length') * 1000, @next)
+    dust.render 'djs/player', @currentTrack.toJSON(), (err, out) =>
+      console.log(['@currentTrack.get("uri")', @currentTrack.get('uri')])
+      console.log(['out', out])
+      @$(".now-playing").html(out)
+    console.log(['@currentTrack.get("length")', @currentTrack.get('length')])
+    @currentTimeout = setTimeout(@next, @currentTrack.get('length'))
     @queueNextTrack()
 
   queueNextTrack: =>
@@ -30,11 +33,15 @@ class App.Views.Dj.Host extends App.Views.BaseView
       success: @loadTrack
 
   loadTrack: =>
+    console.log('loaded track')
+    dust.render 'djs/next', @nextTrack.toJSON(), (err, out) =>
+      @$(".up-next").html(out)
     @trackLoaded = true
 
   next: =>
+    @$(".up-next").empty()
     if @trackLoaded
-      @play
+      @play()
     else
       @nextTrack.on 'sync', =>
-        @play
+        @play()

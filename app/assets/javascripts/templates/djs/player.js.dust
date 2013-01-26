@@ -1,0 +1,2 @@
+<span class="title">"{name}"</span> <span class="artist">by {artist}</span>
+<iframe src="{uri}" style="border: 0;" height="0" width="0"></iframe>

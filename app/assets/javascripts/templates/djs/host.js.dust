@@ -1,5 +1,15 @@
 <form class="create-dj-form">
   <fieldset>
     <legend>Now Playing</legend>
+    <div class="now-playing">
+
+    </div>
+
+  </fieldset>
+  <fieldset>
+    <legend>Up Next</legend>
+    <div class="up-next">
+
+    </div>
   </fieldset>
 </form>
