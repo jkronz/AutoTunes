@@ -23,16 +23,15 @@ class Dj < ActiveRecord::Base
 
   def create_generated_playlist
     echo_nest_result = EchoNestApi.create_dynamic_playlist(self.seed)
-    seed_track_hash = SpotifyApi.echo_nest_to_spotify(echo_nest_result)
-    self.current_track = Track.create(seed_track_hash)
+    self.current_track = Track.create(echo_nest_result['song'])
     self.session_id = echo_nest_result['session_id']
   end
 
   def next_generated_track
     echo_nest_result = EchoNestApi.next_track(self.session_id)
-    next_track_hash = SpotifyApi.echo_nest_to_spotify(echo_nest_result)
+    #next_track_hash = SpotifyApi.echo_nest_to_spotify(echo_nest_result)
     self.played_list.add_track(self.current_track)
-    self.current_track = Track.create(next_track_hash)
+    self.current_track = Track.create(echo_nest_result['song'])
     self.save
     self.current_track
   end

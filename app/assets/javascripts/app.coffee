@@ -15,4 +15,4 @@ class App.Application
         evt.preventDefault()
         router.navigate(href, true)
     route = Backbone.history.start({pushState: true})
-    console.log(['route', route])
+

@@ -1,18 +1,21 @@
 class App.Router extends Backbone.Router
   routes:
+    '': 'home'
     'djs/create': 'createDj'
     'djs/:id': 'showDj'
     'djs/:id/host': 'reloadHostPage'
 
+  home: =>
+    dust.render 'home', {}, (err, out) =>
+      $("#application").html(out)
+
   createDj: =>
-    console.log('creating dj')
     @closeView()
     createDjView = new App.Views.Dj.Create()
     @showView(createDjView)
     @navigate('djs/create')
 
   hostDj: (dj) =>
-    console.log(['dj', dj])
     @closeView()
     hostDjView = new App.Views.Dj.Host({model: dj})
     @showView(hostDjView)
