@@ -3,6 +3,7 @@ class App.Views.Dj.Host extends App.Views.BaseView
   initialize: (options) =>
     @dj = options.model
     @dj.on 'change', @render
+    @trackSearch = new App.Views.Tracks.TrackSearch(dj: @dj)
     @render()
 
   render: =>
@@ -10,6 +11,7 @@ class App.Views.Dj.Host extends App.Views.BaseView
       @$el.html(out)
       @nextTrack = @dj.currentTrack
       $("#application").html(@el)
+      @$(".request-window").html(@trackSearch.render().el)
       @play()
 
   play: =>
@@ -18,10 +20,7 @@ class App.Views.Dj.Host extends App.Views.BaseView
       clearTimeout(@currentTimeout)
       delete @currentTimeout
     dust.render 'djs/player', @currentTrack.toJSON(), (err, out) =>
-      console.log(['@currentTrack.get("uri")', @currentTrack.get('uri')])
-      console.log(['out', out])
       @$(".now-playing").html(out)
-    console.log(['@currentTrack.get("length")', @currentTrack.get('length')])
     @currentTimeout = setTimeout(@next, @currentTrack.get('length'))
     @queueNextTrack()
 
@@ -33,7 +32,6 @@ class App.Views.Dj.Host extends App.Views.BaseView
       success: @loadTrack
 
   loadTrack: =>
-    console.log('loaded track')
     dust.render 'djs/next', @nextTrack.toJSON(), (err, out) =>
       @$(".up-next").html(out)
     @trackLoaded = true
@@ -45,3 +43,8 @@ class App.Views.Dj.Host extends App.Views.BaseView
     else
       @nextTrack.on 'sync', =>
         @play()
+
+  onClose: =>
+    @trackSearch.onClose()
+    @undelegateEvents()
+    @remove()

@@ -11,14 +11,20 @@ class Dj < ActiveRecord::Base
   belongs_to :request_queue, :class_name => 'Playlist', :foreign_key => 'request_queue_id', :dependent => :destroy
   belongs_to :played_list, :class_name => 'Playlist', :foreign_key => 'played_list_id', :dependent => :destroy
   belongs_to :current_track, :class_name => 'Track', :foreign_key => 'current_track_id', :dependent => :destroy
-  def play_queue
-    request_queue.tracks + generated_queue.tracks
-  end
 
   def next
-    current_track = play_queue.first
-    played_list.add_track(current_track)
-    current_track
+    played_list.add_track(self.current_track)
+    self.current_track = self.next_track
+    self.save
+    self.current_track
+  end
+
+  def next_track
+    if request_queue.tracks.length > 0
+      request_queue.tracks.first
+    else
+      next_generated_track
+    end
   end
 
   def create_generated_playlist
@@ -34,6 +40,10 @@ class Dj < ActiveRecord::Base
     self.current_track = Track.create(echo_nest_result['song'])
     self.save
     self.current_track
+  end
+
+  def request_track(track)
+    self.request_queue.add_track(Track.new(track))
   end
 
   def create_playlists

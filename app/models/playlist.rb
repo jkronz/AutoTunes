@@ -8,7 +8,4 @@ class Playlist < ActiveRecord::Base
     track
   end
 
-  def create_track(artist, title, uri)
-    tracks.create(artist: artist, title: title, uri: uri, position: tracks.length)
-  end
 end

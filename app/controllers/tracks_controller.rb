@@ -7,8 +7,13 @@ class TracksController < ApplicationController
 
   def create
     @dj = Dj.find(params[:dj_id])
-    @track = @dj.next_generated_track
+    @track = @dj.next
     respond_with @track, status: :created
   end
+
+  def search
+    respond_with Track.search_spotify(params[:search])
+  end
+
 
 end

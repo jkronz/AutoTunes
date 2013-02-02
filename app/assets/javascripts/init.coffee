@@ -3,7 +3,7 @@ unless window.console?
   window.console.log = () ->
     #nothin.
 
-# Initialize global QuantDesk namespace.
+# Initialize namespaces.
 window.App = _.extend {},
     Collections: {}
     Models: {}
@@ -11,3 +11,4 @@ window.App = _.extend {},
         EventManager: _.extend Backbone.Events
     Views:
         Dj: {}
+        Tracks: {}

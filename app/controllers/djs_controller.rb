@@ -20,8 +20,18 @@ class DjsController < ApplicationController
     end
   end
 
+  def request_track
+    @dj = Dj.find(params[:id])
+    @track = @dj.request_track(track_params)
+    respond_with @track, status: :created
+  end
+
   private
   def dj_params
     params.slice :seed
+  end
+
+  def track_params
+    params.slice :artist, :length, :name, :uri
   end
 end

@@ -13,16 +13,19 @@
 //= require init
 //= require models/track
 //= require models/dj
+//= require models/request
+//= require collections/trackSearchResults
 //= require views/base_view
 //= require views/error
 //= require views/djs/create
 //= require views/djs/host
 //= require views/djs/show
+//= require views/tracks/trackSearch
+//= require views/tracks/trackSearchResult
 //= require router
 //= require app
 //= require_tree ./templates
 $(function() {
-
   window.App.app = new App.Application();
   window.App.app.load();
 });

@@ -1,0 +1,8 @@
+<form class="track-search">
+  <fieldset>
+    <legend>Request a Song</legend>
+    <input type="text" id="search" placeholder="Song or Artist">
+    <button class="btn btn-primary">Search</button>
+  </fieldset>
+</form>
+<ul class="search-results"></ul>

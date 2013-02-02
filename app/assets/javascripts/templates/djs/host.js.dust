@@ -1,15 +1,27 @@
-<form class="create-dj-form">
-  <fieldset>
-    <legend>Now Playing</legend>
-    <div class="now-playing">
+<div class="row">
+  <div class="span6">
+    <fieldset>
+      <legend>Now Playing</legend>
+      <div class="now-playing">
 
-    </div>
+      </div>
 
-  </fieldset>
-  <fieldset>
-    <legend>Up Next</legend>
-    <div class="up-next">
+    </fieldset>
+  </div>
+  <div class="span6">
+    <fieldset>
+      <legend>Up Next</legend>
+      <div class="up-next">
 
-    </div>
-  </fieldset>
-</form>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="row">
+  <div class="span6 request-window"></div>
+  <div class="span6 search-results"></div>
+</div>
+
+
+
+
