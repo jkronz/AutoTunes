@@ -7,11 +7,11 @@ development:
   adapter: postgresql
   host: localhost
   username: postgres
-  database: artisanalplaylist-dev
+  database: autotunes-dev
 
 test:
   adapter: postgresql
   host: localhost
   username: postgres
-  database: artisanalplaylist-test
+  database: autotunes-test
 

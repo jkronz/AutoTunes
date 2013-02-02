@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-ArtisanalPlaylist::Application.load_tasks
+AutoTunes::Application.load_tasks

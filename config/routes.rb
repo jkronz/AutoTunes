@@ -1,4 +1,4 @@
-ArtisanalPlaylist::Application.routes.draw do
+AutoTunes::Application.routes.draw do
 
   class XHRConstraint
     def matches?(request)
