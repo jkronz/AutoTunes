@@ -1,2 +1,4 @@
 log
+config/*.yml
+!config/*.yml.example
 config/initializers/secret_token.rb
