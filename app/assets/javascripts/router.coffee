@@ -31,7 +31,7 @@ class App.Router extends Backbone.Router
     @closeView()
     dj = new App.Models.Dj({id: id})
     showDjView = new App.Views.Dj.Show({model: dj})
-    @showView(createDjView)
+    @showView(showDjView)
     @navigate("djs/#{id}")
 
   ##

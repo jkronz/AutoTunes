@@ -13,8 +13,10 @@ class Dj < ActiveRecord::Base
   belongs_to :current_track, :class_name => 'Track', :foreign_key => 'current_track_id', :dependent => :destroy
 
   def next
+    WebsocketRails["DJ:#{self.id}"].trigger(:current_track, self.current_track)
     played_list.add_track(self.current_track)
     self.current_track = self.next_track
+    WebsocketRails["DJ:#{self.id}"].trigger(:next_track, self.current_track)
     self.save
     self.current_track
   end

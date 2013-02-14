@@ -10,6 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require websocket_rails/main
 //= require init
 //= require models/track
 //= require models/dj
@@ -29,3 +30,4 @@ $(function() {
   window.App.app = new App.Application();
   window.App.app.load();
 });
+

@@ -1,12 +1,21 @@
 class DjsController < ApplicationController
 
-  respond_to :json
+  respond_to :json, :html
 
   # GET /djs/1
   # GET /djs/1.json
   def show
     @dj = Dj.find(params[:id])
-    respond_with @dj
+    if params[:format] == :json
+      respond_with @dj
+    else
+      render 'root/index'
+    end
+
+  end
+
+  def host
+    render 'root/index'
   end
 
   # POST /djs

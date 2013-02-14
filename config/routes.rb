@@ -1,22 +1,18 @@
 AutoTunes::Application.routes.draw do
 
-  class XHRConstraint
-    def matches?(request)
-      request.format == :html
-    end
-  end
-
-  match '(*url)' => 'root#index', :constraints => XHRConstraint.new
   resources :djs do
     member do
       post 'request_track'
+      get 'host'
     end
   end
+
   resources :tracks do
     collection do
       get 'search'
     end
   end
+  root :to => 'root#index'
 
 
   # The priority is based upon order of creation:

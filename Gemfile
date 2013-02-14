@@ -6,7 +6,8 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'thin'
+gem 'websocket-rails'
 gem 'typhoeus'
 
 #gem 'dust-rails', :git => 'git://github.com/jkronz/dust-rails.git'
