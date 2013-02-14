@@ -1,4 +1,3 @@
-require 'SecureRandom'
 class Dj < ActiveRecord::Base
   before_create :generate_id
   before_create :create_playlists
