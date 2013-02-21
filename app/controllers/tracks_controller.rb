@@ -7,8 +7,8 @@ class TracksController < ApplicationController
 
   def create
     @dj = Dj.find(params[:dj_id])
-    Rails.logger.debug "something, please"
-    Rails.logger.debug(WebsocketRails["DJ:#{@dj.id}"].inspect)
+    Rails.logger.info "something, please"
+    Rails.logger.info(WebsocketRails["DJ:#{@dj.id}"].inspect)
     @track = @dj.next
     respond_with @track, status: :created
   end
